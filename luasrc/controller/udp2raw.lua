@@ -5,19 +5,19 @@ function index()
 		return
 	end
 
-	local page = entry({"admin", "services", "udp2raw"},
-		firstchild(), _("udp2raw-tunnel"))
+	local page = entry({"admin", "gamespeeder", "udp2raw"},
+		firstchild(), "GameSpeeder", 45, _("udp2raw-tunnel"))
 	page.dependent = false
 	page.acl_depends = { "luci-app-udp2raw" }
 
-	entry({"admin", "services", "udp2raw", "general"},
+	entry({"admin", "gamespeeder", "udp2raw", "general"},
 		cbi("udp2raw/general"), _("Settings"), 1)
 
-	entry({"admin", "services", "udp2raw", "servers"},
+	entry({"admin", "gamespeeder", "udp2raw", "servers"},
 		arcombine(cbi("udp2raw/servers"), cbi("udp2raw/servers-details")),
 		_("Servers Manage"), 2).leaf = true
 
-	entry({"admin", "services", "udp2raw", "status"}, call("action_status"))
+	entry({"admin", "gamespeeder", "udp2raw", "status"}, call("action_status"))
 end
 
 local function is_running(name)
