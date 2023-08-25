@@ -67,8 +67,8 @@ create_config() {
 	[ -n "$lower_level" ] && echo "--lower-level ${lower_level}" >> $config_file
 	[ -n "$source_ip" ] && echo "--source-ip ${source_ip}" >> $config_file
 	[ -n "$source_port" ] && echo "--source-port ${source_port}" >> $config_file
-	echo "--fix-gro" >> $config_file
-	echo "--sock-buf 8192" >> $config_file	
+	[ $fix_gro -eq 1 ] && echo "--fix-gro" >> $config_file
+	[ -n "$sock_buf" ] && echo "--sock-buf ${sock_buf}" >> $config_file
 	echo "--retry-on-error" >> $config_file
 
 	[ -n "$log_level" ] && echo "--log-level ${log_level}" >> $config_file
@@ -91,6 +91,8 @@ validate_server_section() {
 		'key:string' \
 		'cipher_mode:or("aes128cbc", "xor", "none"):aes128cbc' \
 		'auth_mode:or("md5", "crc32", "simple", "none"):md5' \
+		'fix_gro:bool:0' \
+		'sock_buf:or("10","128","256","512","1024","2048","3072","4096","5120","6144","7168","8192","9216","10240",):1024' \
 		'auto_rule:bool:1' \
 		'keep_rule:bool:0' \
 		'seq_mode:range(0,4)' \
