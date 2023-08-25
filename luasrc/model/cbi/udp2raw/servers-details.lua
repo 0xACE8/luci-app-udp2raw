@@ -20,6 +20,23 @@ local auth_modes = {
 	"none",
 }
 
+local sock_buf = {
+	"10",
+	"128",
+	"256",
+	"512",
+	"1024",
+	"2048",
+	"3072",
+	"4096",
+	"5120",
+	"6144",
+	"7168",
+	"8192",
+	"9216",
+	"10240",	
+}
+
 m = Map("udp2raw", "%s - %s" %{translate("udp2raw-tunnel"), translate("Edit Server")})
 m.redirect = luci.dispatcher.build_url("admin/services/udp2raw/servers")
 m.sid = sid
@@ -66,6 +83,12 @@ o.default = "aes128cbc"
 o = s:option(ListValue, "auth_mode", translate("Auth Mode"))
 for _, v in ipairs(auth_modes) do o:value(v, v:lower()) end
 o.default = "md5"
+
+o = s:option(Flag, "fix_gro", translate("Fix Gro"), translate("Fix Huge packet warning."))
+o.default = "0"
+
+o = s:option(ListValue, "sock_buf", translate("Sock Buff"), translate("buf size for socket,>=10 and <=10240,unit:kbyte,default:1024"))
+o.default = "1024"
 
 o = s:option(Flag, "auto_rule", translate("Auto Rule"), translate("Auto add (and delete) iptables rule."))
 o.default = "0"
