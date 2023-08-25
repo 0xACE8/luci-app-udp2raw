@@ -79,6 +79,18 @@ msgstr "加密方式"
 msgid "Auth Mode"
 msgstr "验证方式"
 
+msgid "Fix Gro"
+msgstr "修复 GRO"
+
+msgid "Fix Huge packet warning."
+msgstr "修复巨大的数据包警告。"
+
+msgid "Sock Buff"
+msgstr "Socket 缓存大小"
+
+msgid "buf size for socket,>=10 and <=10240,unit:kbyte,default:1024"
+msgstr "设置 Socket 的缓存大小，范围(10-10240)/kbyte, 默认：1024。"
+
 msgid "Auto Rule"
 msgstr "自动规则"
 
