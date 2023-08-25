@@ -92,7 +92,7 @@ validate_server_section() {
 		'cipher_mode:or("aes128cbc", "xor", "none"):aes128cbc' \
 		'auth_mode:or("md5", "crc32", "simple", "none"):md5' \
 		'fix_gro:bool:0' \
-		'sock_buf:or("10","128","256","512","1024","2048","3072","4096","5120","6144","7168","8192","9216","10240",):1024' \
+		'sock_buf:or("10","128","256","512","1024","2048","3072","4096","5120","6144","7168","8192","9216","10240"):1024' \
 		'auto_rule:bool:1' \
 		'keep_rule:bool:0' \
 		'seq_mode:range(0,4)' \
