@@ -22,4 +22,12 @@ PKG_MAINTAINER:=Jian Chang <aa65535@live.com>
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
+define Package/$(PKG_NAME)/postinst
+#!/bin/sh
+chmod 755 "$${IPKG_INSTROOT}/etc/init.d/udp2raw" >/dev/null 2>&1
+ln -sf "../init.d/udp2raw" \
+	"$${IPKG_INSTROOT}/etc/rc.d/S88udp2raw" >/dev/null 2>&1
+exit 0
+endef
+
 # call BuildPackage - OpenWrt buildroot signature
