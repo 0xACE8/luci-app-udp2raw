@@ -53,4 +53,10 @@ function o.cfgvalue(...)
 	return v and v:lower() or "md5"
 end
 
+o = s:option(DummyValue, "sock_buf", translate("Sock Buff"))
+function o.cfgvalue(...)
+	local v = Value.cfgvalue(...)
+	return v and v:lower() or "1024"
+end
+
 return m
