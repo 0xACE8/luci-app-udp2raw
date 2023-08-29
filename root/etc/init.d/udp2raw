@@ -29,7 +29,6 @@ add_ipt_rule() {
 		[ $? -ne 0 ] && sleep 2
 	fi
 
-	$ipt_cmd -I INPUT -s "$server_addr"/32 -p tcp -m tcp --sport "$server_port" -m comment --comment "${NAME}DwrW" -j DROP
 }
 
 flush_ipt_rules() {
